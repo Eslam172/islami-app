@@ -21,7 +21,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage('assets/images/quran_bg.png')
+            image: AssetImage('assets/images/dark_bg.png')
           )
         ),
         child: Scaffold(
@@ -49,7 +49,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                 margin: EdgeInsets.only(top: 50),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: Color.fromRGBO(254, 254, 254, 0.7),
+                  color: Color.fromRGBO(20, 26, 46, 0.7),
 
                 ),
                     child: ListView.builder(itemBuilder: (context,index){

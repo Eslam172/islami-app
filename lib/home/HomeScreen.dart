@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage('assets/images/quran_bg.png'))),
+                image: AssetImage('assets/images/dark_bg.png'))),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(

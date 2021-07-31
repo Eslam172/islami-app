@@ -11,7 +11,7 @@ class HadethDetailsScreen extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           image:DecorationImage(
-            image: AssetImage('assets/images/quran_bg.png'),
+            image: AssetImage('assets/images/dark_bg.png'),
             fit: BoxFit.fill
           )
         ),
@@ -36,7 +36,7 @@ class HadethDetailsScreen extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 50,left: 12,right: 12,bottom: 10),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(254, 254, 254, 0.7),
+                  color: Color.fromRGBO(20, 26, 46, 0.7),
                   borderRadius: BorderRadius.circular(50)
                 ),
               ),
