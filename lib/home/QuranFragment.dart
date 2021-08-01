@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami_pract/Providers/ThemeProvider.dart';
+import 'package:islami_pract/main.dart';
 import 'package:islami_pract/widgets/SuraNameWidget.dart';
+import 'package:provider/provider.dart';
 
 class QuranFragment extends StatelessWidget {
   List<String> names = [
@@ -121,7 +124,11 @@ class QuranFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
+    return
+      Column(
+
       children: [
         Expanded(
             flex: 1,
@@ -134,8 +141,28 @@ class QuranFragment extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                themeProvider.isDarkModeEnabled()?
                 Container(
-                  child: Text(
+
+                  child:
+
+                  Text(
+                    'اسم السورة',
+                    style: TextStyle(fontSize: 24,color: MyThemeData.colorWhite,fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
+
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: MyThemeData.darkAccent, width: 2),
+                  ),
+                )
+                :
+                Container(
+
+                  child:
+
+                  Text(
                     'اسم السورة',
                     style: TextStyle(fontSize: 24,color: Theme.of(context).accentColor,fontWeight: FontWeight.w500),
                     textAlign: TextAlign.center,
@@ -151,10 +178,19 @@ class QuranFragment extends StatelessWidget {
                 },
                   itemCount: names.length,
                   separatorBuilder: (context,index){
-                  return Container(
-                    height: 1, color: Theme.of(context).primaryColor,
-                    margin: EdgeInsets.symmetric(horizontal: 25),
-                  );
+                 if(themeProvider.isDarkModeEnabled()) {
+                   return Container(
+                     height: 1, color: MyThemeData.darkAccent,
+                     margin: EdgeInsets.symmetric(horizontal: 25),
+                   );
+                 }else {
+                   return Container(
+                     height: 1, color: Theme
+                       .of(context)
+                       .primaryColor,
+                     margin: EdgeInsets.symmetric(horizontal: 25),
+                   );
+                 }
                   },
                 ))
               ],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_pract/HadethDetails/HadethDetailsScreen.dart';
+import 'package:islami_pract/Providers/ThemeProvider.dart';
 import 'package:islami_pract/home/HadethFragment.dart';
+import 'package:islami_pract/main.dart';
+import 'package:provider/provider.dart';
 
 class HadethTitleWidget extends StatelessWidget {
   Hadeth hadeth;
@@ -8,19 +11,32 @@ class HadethTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return InkWell(
       onTap: (){
         Navigator.of(context).pushNamed(HadethDetailsScreen.ROUTE_NAME,arguments: hadeth);
       },
-      child: Center(
+      child:
+          themeProvider.isDarkModeEnabled()?
+      Center(
         child: Text(
           hadeth.title,
           style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).accentColor),
+              color: MyThemeData.colorWhite),
         ),
-      ),
+      )
+              :
+          Center(
+            child: Text(
+              hadeth.title,
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).accentColor),
+            ),
+          )
     );
   }
 }

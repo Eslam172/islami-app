@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_pract/Providers/ThemeProvider.dart';
+import 'package:islami_pract/main.dart';
 import 'package:islami_pract/widgets/HadethTitleWidget.dart';
+import 'package:provider/provider.dart';
 
 class HadethFragment extends StatefulWidget {
   @override
@@ -15,7 +18,7 @@ class _HadethFragmentState extends State<HadethFragment> {
   }
   @override
   Widget build(BuildContext context) {
-
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       children: [
          Expanded(flex: 1, child: Image.asset('assets/images/hadeth_logo.png')),
@@ -24,10 +27,23 @@ class _HadethFragmentState extends State<HadethFragment> {
              :ListView.separated(itemBuilder: (context,index){
                return HadethTitleWidget(hadethList[index]);
          },itemCount: hadethList.length,separatorBuilder: (context,index){
-               return Container(
-                 height: 1, color: Theme.of(context).primaryColor,
-                 margin: EdgeInsets.symmetric(horizontal: 25),
-               );
+
+              if(themeProvider.isDarkModeEnabled()){
+                return
+
+                  Container(
+                    height: 1, color: MyThemeData.darkAccent,
+                    margin: EdgeInsets.symmetric(horizontal: 25),
+                  );
+              }else {
+                return  Container(
+                  height: 1, color: Theme.of(context).primaryColor,
+                  margin: EdgeInsets.symmetric(horizontal: 25),
+                );
+              }
+
+
+
          },)
          ),
 

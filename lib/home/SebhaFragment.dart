@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_pract/Providers/ThemeProvider.dart';
+import 'package:islami_pract/main.dart';
 import 'dart:math' as Math;
+
+import 'package:provider/provider.dart';
 
 class SebhaFragment extends StatefulWidget {
 
@@ -15,6 +19,7 @@ class _SebhaFragmentState extends State<SebhaFragment> {
   int tasbehIndex =0;
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       children: [
         Container(
@@ -24,17 +29,30 @@ class _SebhaFragmentState extends State<SebhaFragment> {
             children: [
               Container(
                   margin: EdgeInsets.only(left: 30),
-                  child: Center(
+                  child:
+                  themeProvider.isDarkModeEnabled()?
+                  Center(
                       child: Image.asset(
                     'assets/images/headofsebha.png',
                     height: 80,
-                  ))),
+                        color: MyThemeData.darkAccent,
+                  )):
+                  Center(
+                      child: Image.asset(
+                        'assets/images/headofsebha.png',
+                        height: 80,
+
+
+                      ))
+              ),
               InkWell(
                 onTap: (){
                   onSebhaPressed();
                 },
 
-                    child: Container(
+                    child:
+                    themeProvider.isDarkModeEnabled()?
+                    Container(
                         margin: EdgeInsets.only(top: 52),
 
                       child: Transform.rotate(
@@ -42,15 +60,37 @@ class _SebhaFragmentState extends State<SebhaFragment> {
                         child: Image.asset(
                             'assets/images/bodyofsebha.png',
                             height: 180,
+                          color: MyThemeData.darkAccent,
                           ),
                       ),
-                            ),
+                            )
+                        :
+                    Container(
+                      margin: EdgeInsets.only(top: 52),
 
+                      child: Transform.rotate(
+                        angle: Math.pi/180*angle,
+                        child: Image.asset(
+                          'assets/images/bodyofsebha.png',
+                          height: 180,
+                        ),
+                      ),
+                    )
                 
               )
             ],
           ),
         ),
+        themeProvider.isDarkModeEnabled()?
+        Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text(
+              'عدد التسبيحات',
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w300,
+                  color: MyThemeData.colorWhite),
+            )):
         Container(
             margin: EdgeInsets.only(top: 20),
             child: Text(
@@ -60,6 +100,21 @@ class _SebhaFragmentState extends State<SebhaFragment> {
                   fontWeight: FontWeight.w300,
                   color: Theme.of(context).accentColor),
             )),
+        themeProvider.isDarkModeEnabled()?
+        Container(
+          margin: EdgeInsets.only(top: 20),
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          decoration: BoxDecoration(
+              color: MyThemeData.darkPrimary,
+              borderRadius: BorderRadius.circular(20)),
+          child: Text(
+            '$counter',
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: MyThemeData.colorWhite),
+          ),
+        ):
         Container(
           margin: EdgeInsets.only(top: 20),
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -74,6 +129,19 @@ class _SebhaFragmentState extends State<SebhaFragment> {
                 color: Theme.of(context).accentColor),
           ),
         ),
+        themeProvider.isDarkModeEnabled()?
+        Container(
+          margin: EdgeInsets.only(top: 20),
+          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+          decoration: BoxDecoration(
+              color: MyThemeData.darkAccent,
+              borderRadius: BorderRadius.circular(30)),
+          child: Text(
+            '${tasbehList[tasbehIndex]}',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
+          ),
+        ):
         Container(
           margin: EdgeInsets.only(top: 20),
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
@@ -85,7 +153,7 @@ class _SebhaFragmentState extends State<SebhaFragment> {
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
           ),
-        )
+        ),
       ],
     );
   }
