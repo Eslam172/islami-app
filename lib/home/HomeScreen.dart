@@ -43,19 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     themeProvider.toggleTheme();
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.change_circle,size: 40,color: Theme.of(context).accentColor,)),
+                child: Icon(Icons.light_mode,size: 40,color: Theme.of(context).accentColor,)),
           ),
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
-            title: Center(
-                child: Text(
-              'اسلامي',
-              style: TextStyle(
-                  color: MyThemeData.colorWhite,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold),
-            )),
+            title: Container(
+              margin: EdgeInsets.only(right: 50),
+              child: Center(
+                  child: Text(
+                'اسلامي',
+                style: TextStyle(
+                    color: MyThemeData.colorWhite,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              )),
+            ),
             elevation: 0,
           ),
           bottomNavigationBar: Theme(
@@ -116,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         themeProvider.toggleTheme();
                       Navigator.pop(context);
                     },
-                    child: Icon(Icons.change_circle,color: Theme.of(context).accentColor,size: 40,)),
+                    child: Icon(Icons.dark_mode,color: Theme.of(context).accentColor,size: 40,)),
               ),
               backgroundColor: Colors.transparent,
               appBar: AppBar(
@@ -124,14 +127,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Theme.of(context).accentColor
                 ),
                 backgroundColor: Colors.transparent,
-                title: Center(
-                    child: Text(
-                      'اسلامي',
-                      style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                    )),
+                title: Container(
+                  margin: EdgeInsets.only(right: 50),
+                  child: Center(
+                      child: Text(
+                        'اسلامي',
+                        style: TextStyle(
+                            color: Theme.of(context).accentColor,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ),
                 elevation: 0,
               ),
               bottomNavigationBar: Theme(
