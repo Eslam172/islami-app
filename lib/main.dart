@@ -1,11 +1,13 @@
 import 'package:chat_screen/HomeScreen.dart';
+import 'package:chat_screen/model/User.dart';
+import 'package:chat_screen/screens/ChatScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 class MyThemeData{
-  static const  primaryColor=Colors.red;
+  static const  primaryColor=Colors.blueAccent;
   static const  accentColor=Color(0xfffef9eb);
 }
 class MyApp extends StatelessWidget {
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
         accentColor: MyThemeData.accentColor
       ),
         routes: {
-          HomeScreen.routeName: (context) => HomeScreen()
+          HomeScreen.routeName: (context) => HomeScreen(),
+          ChatScreen.routeName:(context)=>ChatScreen()
         },
         initialRoute: HomeScreen.routeName
     );

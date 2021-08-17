@@ -14,7 +14,7 @@ class _CategorySelectorState extends State<CategorySelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 70,
       color: MyThemeData.primaryColor,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

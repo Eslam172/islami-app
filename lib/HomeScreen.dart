@@ -1,4 +1,9 @@
+import 'package:chat_screen/main.dart';
+import 'package:chat_screen/model/Massages.dart';
 import 'package:chat_screen/widgets/CategorySelector.dart';
+import 'package:chat_screen/widgets/FavoriteContacts.dart';
+import 'package:chat_screen/widgets/RecentChats.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         Container(
           child: Scaffold(
+            backgroundColor: MyThemeData.primaryColor,
             appBar: AppBar(
               title: Text('chats',style: TextStyle(
                 fontSize: 28,
@@ -35,7 +41,22 @@ class HomeScreen extends StatelessWidget {
             ),
             body: Column(
               children: [
-                CategorySelector()
+                CategorySelector(),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: MyThemeData.accentColor,
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))
+                    ),
+                    child: Column(
+                      children: [
+                        FavoriteContacts(),
+                        RecentChats()
+                      ],
+                    ),
+                  ),
+                )
               ],
             )
           ),
